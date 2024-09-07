@@ -61,3 +61,18 @@ SELECT
     AVG(stock_quantity), 
     COUNT(*) FROM books
 GROUP BY released_year;
+
+
+SELECT released_year, COUNT(*) AS book_count FROM books GROUP BY released_year;
+select sum(stock_quantity) as stock from books ;
+select author_fname as autor,avg(released_year) as promedioAño from books group by author_fname;
+select concat(author_fname,' ',author_lname) as autor,pages from books order by pages desc limit 1;
+
+SELECT CONCAT(author_fname, ' ', author_lname) AS autor, pages
+FROM books
+WHERE pages = (
+    SELECT MAX(pages)
+    FROM books
+);
+
+select released_year as year,count(*) as books,avg(pages) from books group by released_year;
